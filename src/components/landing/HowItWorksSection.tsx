@@ -31,7 +31,7 @@ const steps = [
   },
   {
     label: '¡A practicar!',
-    description: 'Te recogemos y realizas tu práctica en el circuito oficial.',
+    description: 'Te recogemos y realizas tu práctica en un circuito idéntico al oficial.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round"
