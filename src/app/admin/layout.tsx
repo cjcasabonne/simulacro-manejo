@@ -10,14 +10,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router = useRouter()
   const pathname = usePathname()
 
+  const isLoginPage = pathname === '/admin/login' || pathname === '/admin/login/'
+
   useEffect(() => {
-    if (!loading && !session && pathname !== '/admin/login') {
+    if (!loading && !session && !isLoginPage) {
       router.replace('/admin/login')
     }
-  }, [loading, session, pathname, router])
+  }, [loading, session, isLoginPage, router])
 
   // Login page renders standalone (no sidebar)
-  if (pathname === '/admin/login') return <>{children}</>
+  if (isLoginPage) return <>{children}</>
 
   if (loading) {
     return (
