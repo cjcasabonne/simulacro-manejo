@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { Booking, TimeSlot } from '@/types'
-import { formatDate, getWhatsAppLink } from '@/lib/utils'
+import { formatDate } from '@/lib/utils'
 
 const MapView = dynamic(() => import('./MapView'), { ssr: false, loading: () => <div className="h-40 bg-gray-100 rounded-xl animate-pulse" /> })
 
@@ -12,7 +12,9 @@ interface BookingDetailProps {
 }
 
 export default function BookingDetail({ booking, onBack }: BookingDetailProps) {
-  const waMsg = `Hola ${booking.full_name}, te escribimos del Simulacro de examen de manejo para coordinar los detalles de tu reserva.`
+  const whatsappUrl = `https://wa.me/51${booking.phone}?text=${encodeURIComponent(
+    `Hola ${booking.full_name}, te contactamos de Simulacro de examen de manejo para coordinar tu clase del ${formatDate(booking.time_slots?.start_datetime ?? '')}.`
+  )}`
 
   return (
     <div className="flex flex-col gap-5">
@@ -61,7 +63,7 @@ export default function BookingDetail({ booking, onBack }: BookingDetailProps) {
       )}
 
       <a
-        href={getWhatsAppLink(waMsg)}
+        href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#25D366] text-white text-sm font-semibold hover:bg-green-500 transition-colors"
