@@ -1,7 +1,7 @@
 const benefits = [
   {
     title: 'Simulación realista',
-    description: 'Practicamos en el mismo circuito del examen oficial de manejo en Lima.',
+    description: 'Practicamos en un circuito idéntico al del examen oficial de manejo en Lima.',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round"
