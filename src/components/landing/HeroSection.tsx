@@ -51,7 +51,7 @@ export default function HeroSection() {
 
           {/* Trust badges */}
           <div className="mt-10 flex flex-wrap gap-4 justify-center md:justify-start animate-fade-up delay-400">
-            {['Recojo incluido', 'Sin experiencia previa', 'Circuito oficial Lima'].map((badge) => (
+            {['Recojo incluido', 'Sin experiencia previa', 'Circuito idéntico al oficial Lima'].map((badge) => (
               <span key={badge} className="flex items-center gap-1.5 text-sm text-blue-100">
                 <svg className="w-4 h-4 text-blue-300" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -79,7 +79,7 @@ export default function HeroSection() {
                   <path strokeLinecap="round" d="M12 2v3M12 19v3M2 12h3M19 12h3" />
                   <path strokeLinecap="round" d="M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" />
                 </svg>
-                <p className="text-sm font-semibold tracking-wide">Circuito oficial</p>
+                <p className="text-sm font-semibold tracking-wide">Circuito idéntico al oficial</p>
               </div>
             </div>
 
