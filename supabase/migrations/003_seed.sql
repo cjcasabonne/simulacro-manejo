@@ -14,8 +14,8 @@ begin
   -- Turnos: 5:00, 6:00, 19:00, 20:00, 21:00, 22:00
   insert into time_slots (start_datetime, end_datetime, status)
   select
-    (d + (h || ' hours')::interval)::timestamptz,
-    (d + ((h + 1) || ' hours')::interval)::timestamptz,
+    ((d::text || ' ' || lpad(h::text, 2, '0') || ':00:00')::timestamp AT TIME ZONE 'America/Lima'),
+    ((d::text || ' ' || lpad((h+1)::text, 2, '0') || ':00:00')::timestamp AT TIME ZONE 'America/Lima'),
     'available'
   from
     generate_series(current_date, current_date + interval '27 days', interval '1 day') as d,
