@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-static'
+
 import { useState } from 'react'
 import { useSlots } from '@/hooks/useSlots'
 import { TimeSlot } from '@/types'

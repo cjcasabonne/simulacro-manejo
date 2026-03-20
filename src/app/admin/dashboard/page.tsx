@@ -1,3 +1,5 @@
+export const dynamic = 'force-static'
+
 import StatsCards from '@/components/admin/StatsCards'
 
 export default function DashboardPage() {
