@@ -1,26 +1,165 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ── Fuentes ─────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-body:    var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Variables de color ──────────────────────────── */
+:root {
+  --blue-primary:   #1d4ed8;
+  --blue-dark:      #1e3a8a;
+  --blue-light:     #eff6ff;
+  --blue-accent:    #2563eb;
+  --green-wa:       #25D366;
+  --gray-50:        #f9fafb;
+  --gray-100:       #f3f4f6;
+  --gray-600:       #4b5563;
+  --gray-900:       #111827;
+  --background:     #ffffff;
+  --foreground:     #111827;
 }
 
+/* ── Base ────────────────────────────────────────── */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), 'Sora', system-ui, sans-serif;
+}
+
+/* ── Safe areas (PWA iOS) ───────────────────────── */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.safe-top    { padding-top:    env(safe-area-inset-top);    }
+
+/* ── Animaciones de entrada (scroll) ────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes meshMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.65s ease both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+
+/* Delay utilities */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* ── Mesh gradient hero ─────────────────────────── */
+.hero-mesh {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(99,102,241,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 60% 80%, rgba(37,99,235,0.20) 0%, transparent 50%),
+    linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #1e40af 100%);
+  background-size: 200% 200%;
+  animation: meshMove 12s ease infinite;
+}
+
+/* ── Patrón geométrico sutil ────────────────────── */
+.hero-pattern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* ── Card hover lift ────────────────────────────── */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(29,78,216,0.12);
+}
+
+/* ── Navbar blur ────────────────────────────────── */
+.navbar-blur {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.88);
+}
+
+/* ── Botón primario ─────────────────────────────── */
+.btn-primary {
+  background: var(--blue-primary);
+  color: #fff;
+  font-family: var(--font-display), 'Sora', sans-serif;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 14px 28px;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(29,78,216,0.30);
+}
+.btn-primary:hover {
+  background: var(--blue-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(29,78,216,0.40);
+}
+
+/* ── Botón outline ──────────────────────────────── */
+.btn-outline {
+  border: 2px solid rgba(255,255,255,0.55);
+  color: #fff;
+  font-family: var(--font-display), 'Sora', sans-serif;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 14px 28px;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.9);
+  transform: translateY(-1px);
+}
+
+/* ── Steps connector line ───────────────────────── */
+.steps-connector {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #bfdbfe, #dbeafe);
+  margin: 0 -8px;
+  align-self: flex-start;
+  margin-top: 24px;
+}
+
+/* ── FAQ accordion ──────────────────────────────── */
+.faq-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.faq-body.open {
+  grid-template-rows: 1fr;
+}
+.faq-body-inner {
+  overflow: hidden;
 }
