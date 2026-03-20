@@ -38,6 +38,8 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-gray-800 text-center">
         <p className="text-xs text-gray-600">
           © {year} Simulacro de Manejo. Todos los derechos reservados.
+          {' · '}
+          <a href="/admin/login" className="text-gray-700 hover:text-gray-500 transition-colors">Admin</a>
         </p>
       </div>
     </footer>
