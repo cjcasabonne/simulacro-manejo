@@ -1,1 +1,5 @@
-/*  /index.html  200
+/admin/login       /admin/login/index.html       200
+/admin/dashboard   /admin/dashboard/index.html   200
+/admin/horarios    /admin/horarios/index.html     200
+/admin/reservas    /admin/reservas/index.html     200
+/agendar           /agendar/index.html            200

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { getWhatsAppLink } from '@/lib/utils'
 
 export default function Footer() {
@@ -39,7 +40,7 @@ export default function Footer() {
         <p className="text-xs text-gray-600">
           © {year} Simulacro de Manejo. Todos los derechos reservados.
           {' · '}
-          <a href="/admin/login" className="text-gray-700 hover:text-gray-500 transition-colors">Admin</a>
+          <Link href="/admin/login" className="text-gray-700 hover:text-gray-500 transition-colors">Admin</Link>
         </p>
       </div>
     </footer>
