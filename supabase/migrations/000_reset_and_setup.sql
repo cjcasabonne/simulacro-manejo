@@ -209,14 +209,14 @@ declare
 begin
   insert into time_slots (start_datetime, end_datetime, status)
   select
-    ((d::text || ' ' || lpad(h::text, 2, '0') || ':00:00')::timestamp AT TIME ZONE 'America/Lima'),
-    ((d::text || ' ' || lpad((h+1)::text, 2, '0') || ':00:00')::timestamp AT TIME ZONE 'America/Lima'),
+    (d::date::text || ' ' || lpad(h::text, 2, '0') || ':00:00-05:00')::timestamptz,
+    (d::date::text || ' ' || lpad((h+1)::text, 2, '0') || ':00:00-05:00')::timestamptz,
     'available'
   from
     generate_series(current_date, current_date + interval '27 days', interval '1 day') as d,
     unnest(array[5, 6, 19, 20, 21, 22]) as h
   where
-    ((d::text || ' ' || lpad(h::text, 2, '0') || ':00:00')::timestamp AT TIME ZONE 'America/Lima') > now();
+    (d::date::text || ' ' || lpad(h::text, 2, '0') || ':00:00-05:00')::timestamptz > now();
 
   -- Recolectar IDs para marcar ejemplos
   select array_agg(id order by start_datetime)
